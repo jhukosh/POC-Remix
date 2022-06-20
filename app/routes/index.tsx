@@ -17,7 +17,6 @@ export const loader: LoaderFunction = ({ request }) => {
 export default function Index() {
   const user = useOptionalUser();
   const search = useLoaderData();
-  console.log("search", search);
   return (
     <main className="relative min-h-screen bg-white p-2">
       <div className="flex flex-col justify-between sm:flex-row">
@@ -73,13 +72,13 @@ export default function Index() {
       <div className="grid grid-cols-4 gap-4">
         {search
           ? search.map((b: Book) => (
-              <div key={b.id}>
+              <Link key={b.id} to="/book">
                 {b.volumeInfo.title}
                 <img
                   src={b.volumeInfo.imageLinks.smallThumbnail}
                   alt={`Cover of ${b.volumeInfo.title}`}
                 />
-              </div>
+              </Link>
             ))
           : null}
       </div>

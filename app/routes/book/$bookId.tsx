@@ -1,21 +1,21 @@
 import { Form, useLoaderData } from "@remix-run/react";
-import { LoaderFunction } from "@remix-run/server-runtime";
+import type { LoaderFunction } from "@remix-run/server-runtime";
 import invariant from "tiny-invariant";
 import { getBookById } from "~/api/books";
 import { BookDetails } from "~/components/BookDetails";
-import { Book } from "~/domain/books";
+import type { Book } from "~/domain/books";
 
-export const loader: LoaderFunction = async ({params}) => {
+export const loader: LoaderFunction = async ({ params }) => {
   invariant(params.bookId, "Book id is required");
   const book = getBookById("fake-id");
   return book;
-}
+};
 
 export default function BookDetailsPage() {
-  const book = useLoaderData<Book>()
+  const book = useLoaderData<Book>();
   return (
     <div>
-      <h3 className="text-2xl font-bold">{book.title}</h3>
+      <h3 className="text-2xl font-bold">{book.volumeInfo.title}</h3>
       <BookDetails book={book} />
       <hr className="my-4" />
       <Form method="post">
