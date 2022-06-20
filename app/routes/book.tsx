@@ -9,7 +9,7 @@ type LoaderData = {
 };
 
 export const loader: LoaderFunction = async () => {
-  const booksList = await getBooks();
+  const booksList = await getBooks("kundera");
   console.log("bookList", booksList);
   return json<LoaderData>({ booksList });
 };
