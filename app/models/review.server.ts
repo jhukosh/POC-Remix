@@ -5,6 +5,8 @@ import { prisma } from "~/db.server";
 export function createReview({
   body,
   title,
+  isPublic,
+  rating = 0,
   userId,
 }: Pick<Review, "body" | "title" | "isPublic" | "rating"> & {
   userId: User["id"];
