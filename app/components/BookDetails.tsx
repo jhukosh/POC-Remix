@@ -5,5 +5,5 @@ type BookDetailsProps = {
 };
 
 export const BookDetails = ({ book }: BookDetailsProps) => {
-  return <div>{book.synopsis}</div>;
+  return <div>{book.volumeInfo.description}</div>;
 };
